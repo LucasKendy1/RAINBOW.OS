@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow.OS</title>
+    <style>
+        body{
+            background-color: #00A8FE;
+            margin: 0;
+        }
+        div#faixa1{
+            background-color: orange;
+            height: 5px;
+            width: 100%;
+            position: absolute;
+            margin-top: 110px;
+        }
+        div#faixa2{
+            background-color:  orange;
+            height: 5px;
+            width: 100%;
+            position: absolute;
+            margin-bottom: 110px;
+        }
+        header{
+            width: 100%;
+            height: 110px;
+            background-color: rgb(72, 53, 240);
+        }
+        footer{
+            width: 100%;
+            height: 110px;
+            background-color: rgb(72, 53, 240);
+            margin-top: 126px;
+        }
+        h1{
+            color: white;
+            font-size: 26pt;
+            text-align: center;
+            font-family: monocraft;
+            line-height: 600px;
+        }
+    </style>
+</head>
+<body >
+    <audio src="Windows XP Startup.wav" autoplay></audio>
+    <header>
+        <div id="faixa1"></div>
+    </header>
+    <h1 id="titulo"> welcome</h1>
+    <footer>
+        <div id="faixa2"></div>
+   </footer>
+   
+   <script>
+    setTimeout(function(){
+        window.location.href='areadetrabalho.html'
+    },5000)
+    var titulo=document.getElementById('titulo')
+    setTimeout(function(){
+        titulo.innerText +='.'
+    },1000)
+    setTimeout(function(){
+        titulo.innerText+='.'
+    },2000)
+    setTimeout(function(){
+        titulo.innerText+='.'
+    },3000)
+    
+    </script>
+</body>
+</html>

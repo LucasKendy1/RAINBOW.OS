@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raimbow.OS</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+            background-image: url("xpwallpaper.webp") ;
+            background-size: cover;
+        }
+        img#bandeira{
+            margin-top: 150px;
+            margin-left: 20px;
+        }
+        img#lixeira{
+            position: absolute;
+            margin-top: 50px;
+            margin-left: 20px;
+        }
+        div#taskbar{
+            width: 100%;
+            height: 50px;
+            background-color: #2565E9;
+            position: absolute;
+            margin-top: 36.5%;
+        }
+        div#menu{
+            width: 150px;
+            height: 50px;
+            background-color: #419c41;
+            font-size: 20pt;
+            color: white;
+            font-family: monocraft;
+            text-align: center;
+            line-height: 50px;
+        }
+        section{
+            width: 300px;
+            height: 500px;
+            background-color: #6D96EE;
+            margin-top: 200px;
+        }
+        div#txt{
+            margin-top: -39px;
+            color: white;
+            font-size: 20pt;
+            font-family: monocraft;
+            position: absolute;
+            margin-left: 1750px;
+        }
+    </style>
+</head>
+<body onload="time()">
+    <img src="lixeira.svg" alt=""  width="70px" id="lixeira">
+   <img src="inglaterra.svg" alt="" width="70px" onclick="bandeira()" id="bandeira">
+
+    <div id="taskbar">
+        <div id="menu" onclick="openmenu()" onmouseenter="entrou()" onmouseleave="saiu()">
+            start
+        </div>
+        <div id="txt"></div>
+    </div>
+   <script>
+    //lampada.addEventListener('dblclick',quebrar)
+    var botao=document.getElementById('menu')
+    var pai=document.body
+    
+        function bandeira(){
+            window.location.href='bandeira.html'
+        }
+        
+        function entrou(){
+            botao.style.backgroundColor='#337a33'
+        }
+        function saiu(){
+            botao.style.backgroundColor='#419c41'
+        }
+        var box = document.createElement('section')
+        var desligar = document.createElement('img')
+        var reiniciar= document.createElement('img')
+        var msgreiniciar= document.createElement('p')
+        var msgoff= document.createElement('p')
+
+        function openmenu(){
+            reiniciar.src='reiniciar.svg'
+            reiniciar.style.width='35px'
+            reiniciar.style.marginTop='400px'
+            reiniciar.style.marginLeft='-35px'
+            reiniciar.style.position='absolute'
+            desligar.src='turnoff.svg'
+            desligar.style.width='35px'
+            desligar.style.marginTop='450px'
+            desligar.style.marginLeft='10px'
+            msgoff.innerText='desligar'
+            msgoff.style.color='black'
+            msgoff.style.marginTop='-30px'
+            msgoff.style.marginLeft='50px'
+            msgoff.style.fontSize='15pt'
+            msgoff.style.fontFamily='monocraft'
+            msgreiniciar.innerText='reiniciar'
+            msgreiniciar.style.color='black'
+            msgreiniciar.style.marginTop='-75px'
+            msgreiniciar.style.marginLeft='50px'
+            msgreiniciar.style.fontSize='15pt'
+            msgreiniciar.style.fontFamily='monocraft'
+            
+            pai.appendChild(box)
+            box.appendChild(desligar)
+            box.appendChild(reiniciar)
+            box.appendChild(msgoff)
+            box.appendChild(msgreiniciar)
+            desligar.addEventListener('click',desligarwin)
+            reiniciar.addEventListener('click',reiniciarwin)
+            botao.addEventListener('click',fechar)
+        }
+        function desligarwin(){
+            window.location.href='off.html'
+        }
+        function reiniciarwin(){
+            window.location.href='raibow.html'
+        }
+        function fechar(){
+            pai.removeChild(box)
+            box.removeChild(desligar)
+            box.removeChild(reiniciar)
+            box.removeChild(msgoff)
+            box.removeChild(msgreiniciar)
+        }
+        var horario=''
+        function time()
+        {
+            today=new Date();
+            h=today.getHours();
+            m=today.getMinutes();
+            s=today.getSeconds();
+            if(h<12){
+                horario='AM'
+            }
+            else{
+                horario='PM'
+            }
+            let hora=document.createElement('div')
+            document.getElementById('txt').innerHTML=h+":"+m+" "+horario;
+            setTimeout('time()',500);
+
+        }
+   </script>
+</body>
+</html>

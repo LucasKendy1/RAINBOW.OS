@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advinha bandeira</title>
+    <style>
+        body{
+            background-image: url("xpwallpaper.webp") ;
+            background-size: cover;
+        }
+        section{
+            background: linear-gradient(110deg, #11A3A7 0%,  #335192);
+            width: 800px;
+            height: 650px;
+            margin: auto;
+            margin-top: 00px;
+            border-radius : 5px;
+            
+        }
+        div#gtf{
+            background-color: #0367F7;
+            width: 800px;
+            height: 40px;
+            margin: auto;
+            margin-top: 200px;
+            font-family: monocraft;
+            font-size: 15pt;
+            color: white;
+            
+        }
+        img#xis{
+            margin-top: 2.5px;
+            margin-left: 762px;
+        }
+        p{
+            margin-top: 10px;
+            position: absolute;
+            margin-left: 50px;
+        }
+        img#icon{
+            position:  absolute;
+            margin-top: 2.5px;
+            margin-left: 2.5px;
+        }
+        img#bandeira{
+            margin: auto;
+            position: absolute;
+            margin-left: 250px;
+            margin-top: 150px;
+        }
+        div#opcao{
+            height: 80px;
+            width: 300px;
+            background-color: rgb(197, 196, 196);
+            margin: auto;
+            margin-left: 10px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        div#campo{
+            width: fit-content;
+            height: fit-content;
+            margin-top:400px;
+            margin-left: 90px;
+            color: rgb(49, 49, 49);
+            font-size: 15pt;
+            text-align: center;
+            line-height: 70px;
+            font-family: monocraft;
+            
+        }
+        p#mensagemzinha{
+            color: red;
+            position: absolute;
+            margin-left: 350px;
+            font-size: 25pt;
+            font-family: monocraft;
+        }
+        p#ponts{
+            color: black;
+            position: absolute;
+            margin-left: 690px;
+            font-size: 25pt;
+            font-family: monocraft;
+        }
+        
+    </style>
+</head>
+<body onload="carregar()">
+    <audio src="musica.m4a" autoplay></audio>
+    <div id="gtf">
+        <img src="inglaterra.svg" alt="" width="35px" id="icon">
+        <p>Guess The Flag.exe</p>
+        <img src="xis.svg" alt="" width="35px" id="xis" onclick="voltar()">
+    </div>
+    <section>
+        <div id="gif">
+            <img id="bandeira" src="https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Tocantins-300x210.png" alt="" >
+        </div>
+        <br>
+        <p id="mensagemzinha"></p><p id="ponts"></p>
+        <div id="campo">
+            <div id="opcao" class="op1" onclick="verificar1()"></div>
+            <div id="opcao" class="op2" onclick="verificar2()"></div>
+            <br>
+            <div id="opcao" class="op3" onclick="verificar3()"></div>
+            <div id="opcao" class="op4" onclick="verificar4()"></div>
+        </div>
+        
+    </section>
+
+    <script>
+        var img=document.getElementById('bandeira')
+        var estados=['Acre','Alagoas','Amapá','Amazonas','Bahia','Ceará','Distrito Federal','Espírito Santo','Goiás','Maranhão','Mato Grosso','Mato Grosso do Sul','Minas Gerais','Pará','Paraíba','Paraná','Pernambuco','Piauí','Rio de Janeiro','Rio grande do Norte','Rio grande do sul','Rondônia','Roraima','Santa Catarina','São Paulo','Sergipe','Tocantins']
+        var op1=document.querySelector('div.op1')
+        var op2=document.querySelector('div.op2')
+        var op3=document.querySelector('div.op3')
+        var op4=document.querySelector('div.op4')
+        
+        var v1=0
+        var v2=0
+        var v3=0
+        var v4=0
+        
+        var op=[]
+        var bandeira=0
+        function carregar(){
+            do{
+                v1=sortear(0,26)
+                v2=sortear(0,26)
+                v3=sortear(0,26)
+                v4=sortear(0,26) 
+            }while(v1==v2 || v1==v3 || v1==v4 || v2==v3 || v2==v4 || v3==v4)
+            op1.innerHTML=estados[v1]
+            op2.innerHTML=estados[v2]
+            op3.innerHTML=estados[v3]
+            op4.innerHTML=estados[v4]
+            op=[v1,v2,v3,v4]
+            bandeira=sortear(0,3)
+            //window.alert(op)
+            //window.alert(op[bandeira])
+            if(op[bandeira]==0){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Acre-300x210.png'
+            }
+            else if(op[bandeira]==1){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Alagoas-300x200.png'
+            }
+            else if(op[bandeira]==2){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Amapa-300x210.png'
+            }
+            else if(op[bandeira]==3){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Amazonas-300x214.png'
+            }
+            else if(op[bandeira]==4){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_da_Bahia-300x200.png'
+            }
+            else if(op[bandeira]==5){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Ceara-300x210.png'
+            }
+            else if(op[bandeira]==6){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Distrito_Federal_Brasil-300x210.png'
+            }
+            else if(op[bandeira]==7){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Espirito_Santo-300x210.png'
+            }
+            else if(op[bandeira]==8){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Goias-300x210.png'
+            }
+            else if(op[bandeira]==9){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Maranhao-300x200.png'
+            }
+            else if(op[bandeira]==10){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Mato_Grosso-300x210.png'
+            }
+            else if(op[bandeira]==11){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Mato_Grosso_do_Sul-300x210.png'
+            }
+            else if(op[bandeira]==12){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Minas_Gerais-300x210.png'
+            }
+            else if(op[bandeira]==13){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Para-300x200.png'
+            }
+            else if(op[bandeira]==14){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_da_Paraiba-300x210.png'
+            }
+            else if(op[bandeira]==15){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Parana-300x210.png'
+            }
+            else if(op[bandeira]==16){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Pernambuco-300x210.png'
+            }
+            else if(op[bandeira]==17){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Piaui-300x200.png'
+            }
+            else if(op[bandeira]==18){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_Rio_de_Janeiro-300x210.png'
+            }
+            else if(op[bandeira]==19){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Rio_Grande_do_Norte-300x200.png'
+            }
+            else if(op[bandeira]==20){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Rio_Grande_do_Sul-300x210.png'
+            }
+            else if(op[bandeira]==21){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Rondonia-300x210.png'
+            }
+            else if(op[bandeira]==22){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Roraima-300x200.png'
+            }
+            else if(op[bandeira]==23){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Santa_Catarina-300x218.png'
+            }
+            else if(op[bandeira]==24){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_Sao_Paulo-300x200.png'
+            }
+            else if(op[bandeira]==25){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_de_Sergipe-300x210.png'
+            }
+            else if(op[bandeira]==26){
+                img.src='https://mundodageografia.com.br/wp-content/uploads/2020/10/Bandeira_do_Tocantins-300x210.png'
+            }
+        }
+        
+        function voltar(){
+            window.location.href='areadetrabalho.html'
+        }
+        function sortear(min, max){
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        var pontuacao=document.getElementById('ponts')
+        var mensagemzinha=document.getElementById('mensagemzinha')
+        var pontos=0
+        var total=0
+        function verificar1(){
+            //window.alert(v1)
+            if(op[bandeira]==v1){
+                mensagemzinha.style.color='#68D967'
+                mensagemzinha.innerHTML='Acertou!'
+                pontos+=1
+            }
+            else{
+                mensagemzinha.style.color='red'
+                mensagemzinha.innerHTML='Errou!'
+            }
+            setTimeout(function(){
+                total+=1
+                pontuacao.innerHTML=`${pontos}/${total}`
+                carregar()
+                mensagemzinha.innerHTML=''
+            },1000)
+        }
+        function verificar2(){
+            //window.alert(v2)
+            if(op[bandeira]==v2){
+                mensagemzinha.style.color='#68D967'
+                mensagemzinha.innerHTML='Acertou!'
+                pontos+=1
+                pontuacao.innerHTML=pontos
+            }
+            else{
+                mensagemzinha.style.color='red'
+                mensagemzinha.innerHTML='Errou!'
+            }
+            setTimeout(function(){
+                total+=1
+                pontuacao.innerHTML=`${pontos}/${total}`
+                carregar()
+                mensagemzinha.innerHTML=''
+            },1000)   
+        }
+        function verificar3(){
+            //window.alert(v3)
+            if(op[bandeira]==v3){
+                mensagemzinha.style.color='#68D967'
+                mensagemzinha.innerHTML='Acertou!'
+                pontos+=1
+                pontuacao.innerHTML=pontos
+            }
+            else{
+                mensagemzinha.style.color='red'
+                mensagemzinha.innerHTML='Errou!'
+            }
+            setTimeout(function(){
+                total+=1
+                pontuacao.innerHTML=`${pontos}/${total}`
+                carregar()
+                mensagemzinha.innerHTML=''
+            },1000)
+            
+        }
+        function verificar4(){
+            //window.alert(v4)
+            if(op[bandeira]==v4){
+                mensagemzinha.style.color='#68D967'
+                mensagemzinha.innerHTML='Acertou!'
+                pontos+=1
+                pontuacao.innerHTML=pontos
+            }
+            else{
+                mensagemzinha.style.color='red'
+                mensagemzinha.innerHTML='Errou!'
+            }
+            setTimeout(function(){
+                total+=1
+                pontuacao.innerHTML=`${pontos}/${total}`
+                carregar()
+                mensagemzinha.innerHTML=''
+            },1000)
+        }
+    </script>
+</body>
+</html>

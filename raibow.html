@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raimbow.os</title>
+    <style>
+        body{
+            background-color: #00A8FE;
+            margin: 0;
+        }
+        div#login{
+            background-color: rgb(72, 53, 240);
+            height:120px;
+            width: 650px;
+            margin-right: 180px;
+            margin-top: 100px;
+            border-style: solid ;
+            border-color: #96d5f5;
+            border-width: 5px;
+            
+        }
+        section{
+             display: flex;
+             justify-content: space-between;
+             padding: 30px;
+             margin-top: 210px;
+            
+        }
+        img#arcoiris{
+            width: 200px;
+            margin-left: 50px;
+        }
+        div#imagem{
+            margin-left: 540px;
+        }
+        div#divisao{
+            background-color:#96d5f5;
+            width: 5px;
+            height: 300px;
+        }
+        h1{
+            color: white;
+            font-size: 26pt;
+            text-align: center;
+            font-family: monocraft;
+        }
+        img#perfil{
+            margin-top: 15px;
+            position: absolute;
+            margin-left: 15px;
+        }
+        p{
+            color: rgb(247, 82, 82);
+            margin-top: -50px;
+            margin-left:230px;
+        }
+        input{
+            margin-top: -17px;
+            width: 350px;
+            height: 50px;
+            margin-left: 120px;
+            font-family: monocraft;
+            font-size: 15pt;
+            padding-left: 10px;
+
+        }
+        header{
+            width: 100%;
+            height: 110px;
+            background-color: rgb(72, 53, 240);
+        }
+        footer{
+            width: 100%;
+            height: 110px;
+            background-color: rgb(72, 53, 240);
+            margin-top: 179px;
+        }
+        img#enter{
+            margin-top: -15px;
+            position: absolute;
+            margin-left: 20px;
+        }
+        img#interrogacao{
+            margin-top: -15px;
+            position: absolute;
+            margin-left: 90px;
+        }
+        div#faixa1{
+            background-color: orange;
+            height: 5px;
+            width: 100%;
+            position: absolute;
+            margin-top: 110px;
+        }
+        div#faixa2{
+            background-color: orange;
+            height: 5px;
+            width: 100%;
+            position: absolute;
+            margin-bottom: 110px;
+        }
+        h2{
+            color: white;
+            font-family: monocraft;
+            font-size: 18pt;
+            margin-top: 25px;
+            margin-left: 130px;
+        }
+        h3{
+            color: white;
+            font-family: monocraft;
+            font-size: 13pt;
+            margin-left: 129px;
+        }
+        img#off{
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+        h4{
+            color: white;
+            font-family: monocraft;
+            font-size: 15pt;
+            margin-top:45px;
+            margin-left: 130px;
+            position: absolute;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div id="faixa1"></div>
+    </header>
+    <section>
+        <div id="imagem">
+            <img src="osicon.svg" alt="" id="arcoiris"><br>
+            <h1>Rainbow <p>OS</p></h1>
+        </div>
+        <div id="divisao"></div>
+        <div id="login" >
+            <img src="perfil.svg" alt="" id="perfil" width="90px">
+            <h2>Lucas Kendy</h2>
+            <h3>Type your password</h3>
+            <input type="password" placeholder="PASSWORD..." id="pass">
+            <img src="enter.svg" alt="" width="53px" id="enter" onclick="verificar()">
+            <img src="interrogacao.svg" alt="" width="53px" id="interrogacao" onclick="dica()">
+            <p id="msg"></p> 
+        </div>
+    </section>
+   <footer>
+        <div id="faixa2"></div>
+        <h4>Turn Off computer</h4>
+        <img src="turnoff.svg" alt="" width="53px" id="off" onclick="turnoff()">
+   </footer>
+    
+    <script>
+        function verificar(){
+            var password=document.getElementById('pass')
+            var msg=document.getElementById('msg')
+            if(password.value!='abc'){
+                window.alert("Senha Incorreta!")
+            }
+            else{
+                window.location.href='welcome.html'
+            }
+            password.value=''
+            password.focus()
+        }
+        function dica(){
+            window.alert("Tente abc")
+        }
+        function turnoff(){
+            window.location.href='off.html'
+        }
+    </script>
+</body>
+</html>
